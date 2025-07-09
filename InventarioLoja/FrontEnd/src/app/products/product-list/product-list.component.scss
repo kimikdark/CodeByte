@@ -1,0 +1,132 @@
+/* src/app/products/product-list/product-list.component.scss */
+.product-list-container {
+  padding: 20px;
+  h2 {
+    text-align: center;
+    color: #3f51b5;
+    margin-bottom: 30px;
+  }
+}
+
+.loading-message, .error-message, .no-products-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #555;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: #d32f2f; // Vermelho
+  border-color: #d32f2f;
+  background-color: #ffebee; // Vermelho claro
+  button {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    &:hover {
+      background-color: #b71c1c;
+    }
+  }
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  h3 {
+    color: #3f51b5;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    color: #666;
+    flex-grow: 1; // Permite que a descrição ocupe o espaço disponível
+    margin-bottom: 15px;
+  }
+
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4CAF50; // Verde
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .stock-low {
+    color: #FFC107; // Amarelo
+    font-weight: bold;
+  }
+
+  .stock-out {
+    color: #D32F2F; // Vermelho
+    font-weight: bold;
+  }
+
+  .alert-text {
+    font-size: 0.85em;
+    margin-left: 5px;
+  }
+
+  .actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end; // Alinha botões à direita
+
+    button {
+      background-color: #2196F3; // Azul padrão
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #1976D2;
+      }
+
+      &.delete-btn {
+        background-color: #F44336; // Vermelho para deletar
+        margin-left: 10px;
+        &:hover {
+          background-color: #D32F2F;
+        }
+      }
+    }
+  }
+}
