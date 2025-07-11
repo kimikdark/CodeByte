@@ -1,0 +1,64 @@
+<div class="product-form-container">
+  <h2>{{ isEditMode ? 'Editar Produto' : 'Criar Novo Produto' }}</h2>
+
+  <div *ngIf="isLoading" class="loading-message">
+    A carregar...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input id="name" type="text" formControlName="name" />
+      <div *ngIf="hasError('name', 'required')" class="validation-error">
+        O nome é obrigatório.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="hasError('description', 'required')" class="validation-error">
+        A descrição é obrigatória.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Preço:</label>
+      <input id="price" type="number" formControlName="price" step="0.01" />
+      <div *ngIf="hasError('price', 'required')" class="validation-error">
+        O preço é obrigatório.
+      </div>
+      <div *ngIf="hasError('price', 'min')" class="validation-error">
+        O preço deve ser maior que zero.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categoria:</label>
+      <input id="category" type="text" formControlName="category" />
+      <div *ngIf="hasError('category', 'required')" class="validation-error">
+        A categoria é obrigatória.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="quantityInStock">Quantidade em Stock:</label>
+      <input id="quantityInStock" type="number" formControlName="quantityInStock" />
+      <div *ngIf="hasError('quantityInStock', 'required')" class="validation-error">
+        A quantidade em stock é obrigatória.
+      </div>
+      <div *ngIf="hasError('quantityInStock', 'min')" class="validation-error">
+        A quantidade não pode ser negativa.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="productForm.invalid || isLoading">
+      {{ isEditMode ? 'Salvar Alterações' : 'Criar Produto' }}
+    </button>
+    <button type="button" (click)="router.navigate(['/products'])">Cancelar</button>
+  </form>
+</div>

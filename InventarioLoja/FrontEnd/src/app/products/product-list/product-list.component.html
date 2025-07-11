@@ -1,8 +1,8 @@
 <div class="product-list-container">
-  <h2>Nossos Produtos</h2>
+  <h2 class="section-title">Conheça Os Nossos Tesouros Eletrónicos</h2>
 
   <div *ngIf="isLoading" class="loading-message">
-    Carregando produtos...
+    A carregar produtos...
   </div>
 
   <div *ngIf="errorMessage" class="error-message">
@@ -16,22 +16,25 @@
 
   <div class="product-grid" *ngIf="!isLoading && products.length > 0">
     <div *ngFor="let product of products" class="product-card">
-      <h3>{{ product.nome }}</h3>
-      <p class="description">{{ product.descricao }}</p>
-      <p class="price">Preço: {{ product.preco | currency:'EUR':'symbol':'1.2-2' }}</p>
-      <p>Categoria: {{ product.categoria }}</p>
-      <p [ngClass]="{
-        'stock-low': isLowStock(product.quantidadeEmStock),
-        'stock-out': isOutOfStock(product.quantidadeEmStock)
-      }">
-        Stock: {{ product.quantidadeEmStock }} unidades
-        <span *ngIf="isLowStock(product.quantidadeEmStock)" class="alert-text">(Baixo Stock!)</span>
-        <span *ngIf="isOutOfStock(product.quantidadeEmStock)" class="alert-text">(Esgotado!)</span>
-      </p>
+      <img [src]="product.imageUrl || 'https://via.placeholder.com/200x150.png?text=Produto'" [alt]="product.name" class="product-image">
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+        <p class="product-category">Categoria: {{ product.category }}</p>
+        <p [ngClass]="{
+          'stock-low': isLowStock(product.quantityInStock),
+          'stock-out': isOutOfStock(product.quantityInStock)
+        }">
+          Stock: {{ product.quantityInStock }} unidades
+          <span *ngIf="isLowStock(product.quantityInStock)" class="alert-text">(Baixo Stock!)</span>
+          <span *ngIf="isOutOfStock(product.quantityInStock)" class="alert-text">(Esgotado!)</span>
+        </p>
 
-      <div class="actions">
-        <button class="delete-btn" (click)="deleteProduct(product.id)">Excluir</button>
-      </div>
+        <div class="product-actions">
+          <button class="btn btn-details" (click)="viewProductDetails(product.id)">Saiba Mais</button>
+        </div>
+        </div>
     </div>
   </div>
 </div>

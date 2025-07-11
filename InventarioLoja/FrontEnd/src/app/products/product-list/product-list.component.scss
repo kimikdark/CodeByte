@@ -1,132 +1,139 @@
 /* src/app/products/product-list/product-list.component.scss */
-.product-list-container {
-  padding: 20px;
-  h2 {
-    text-align: center;
-    color: #3f51b5;
-    margin-bottom: 30px;
-  }
-}
 
-.loading-message, .error-message, .no-products-message {
+/* Estilos para o título da seção */
+.section-title {
   text-align: center;
-  padding: 20px;
-  font-size: 1.2rem;
-  color: #555;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-l); /* Usa a variável de espaçamento global */
+  color: var(--color-primary); /* Usa a cor principal verde-água */
+  font-size: 2.2em;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
-.error-message {
-  color: #d32f2f; // Vermelho
-  border-color: #d32f2f;
-  background-color: #ffebee; // Vermelho claro
-  button {
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 10px;
-    &:hover {
-      background-color: #b71c1c;
-    }
-  }
-}
-
+/* Grid para os cards de produtos */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  justify-content: center;
+  /* Cria colunas responsivas: preenche automaticamente com cards de no mínimo 250px */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-m); /* Espaçamento entre os cards */
+  max-width: 1200px; /* Alinha com a largura máxima do main-content no app.scss */
+  margin: 0 auto var(--spacing-xl) auto; /* Centraliza o grid e adiciona margem inferior */
 }
 
+/* Estilos para cada card de produto individual */
 .product-card {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: var(--color-background-card); /* Fundo claro com toque de verde-água */
+  border-radius: 10px; /* Bordas arredondadas para um look moderno */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Sombra suave, mas com profundidade */
+  overflow: hidden; /* Garante que a imagem arredondada não vaze */
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  align-items: center; /* Centraliza o conteúdo (imagem, texto, botão) */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito de transição suave no hover */
+  border: 1px solid var(--color-border-light); /* Borda sutil para definir o card */
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* Efeito de levantar o card no hover */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra maior e mais escura no hover */
   }
+}
 
-  h3 {
-    color: #3f51b5;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+.product-image {
+  width: 100%;
+  height: 180px; /* Altura fixa para todas as imagens dos cards */
+  object-fit: cover; /* Ajusta a imagem para cobrir a área sem distorcer */
+  border-bottom: 1px solid var(--color-border-light); /* Linha sutil separando imagem do info */
+  border-top-left-radius: 10px; /* Arredonda os cantos superiores da imagem */
+  border-top-right-radius: 10px;
+}
+
+.product-info {
+  padding: var(--spacing-m); /* Espaçamento interno dentro da seção de info do card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; /* Permite que o bloco de info preencha o espaço restante */
+  justify-content: space-between; /* Ajuda a posicionar o botão na parte inferior */
+  width: 100%; /* Ocupa toda a largura disponível no card */
+}
+
+.product-name {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: var(--spacing-s);
+  color: var(--color-text-main);
+  min-height: 2.6em; /* Garante espaço para 2 linhas de texto */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
+}
+
+.product-price {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--color-primary); /* Preço com a cor principal verde-água */
+  margin-bottom: var(--spacing-m);
+}
+
+.add-to-cart-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px 25px; /* Padding maior para um botão mais proeminente */
+  border-radius: 8px; /* Bordas mais arredondadas para o botão */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  width: 90%; /* Ocupa a maior parte da largura do card */
+
+  &:hover {
+    background-color: var(--color-primary-light); /* Cor verde-água mais clara no hover */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px); /* Pequeno efeito de levantar no hover */
   }
-
-  .description {
-    font-size: 0.9rem;
-    color: #666;
-    flex-grow: 1; // Permite que a descrição ocupe o espaço disponível
-    margin-bottom: 15px;
+  &:active {
+    transform: translateY(0); /* Volta à posição original ao clicar */
   }
+}
 
-  .price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #4CAF50; // Verde
-    margin-bottom: 10px;
+/* Estilos para a mensagem de nenhum produto encontrado */
+.no-products-message {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1.1em;
+  padding: var(--spacing-xl);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Reduz a largura mínima dos cards em telas menores */
+    gap: var(--spacing-s);
   }
-
-  p {
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-    color: #333;
+  .section-title {
+    font-size: 1.8em;
   }
-
-  .stock-low {
-    color: #FFC107; // Amarelo
-    font-weight: bold;
+  .product-card {
+    border-radius: 8px;
   }
-
-  .stock-out {
-    color: #D32F2F; // Vermelho
-    font-weight: bold;
+  .product-image {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
+}
 
-  .alert-text {
-    font-size: 0.85em;
-    margin-left: 5px;
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* Uma única coluna em telas muito pequenas (ex: mobile) */
+    padding: 0 var(--spacing-s); /* Ajusta padding para telas pequenas */
   }
-
-  .actions {
-    margin-top: 15px;
-    display: flex;
-    justify-content: flex-end; // Alinha botões à direita
-
-    button {
-      background-color: #2196F3; // Azul padrão
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #1976D2;
-      }
-
-      &.delete-btn {
-        background-color: #F44336; // Vermelho para deletar
-        margin-left: 10px;
-        &:hover {
-          background-color: #D32F2F;
-        }
-      }
-    }
+  .product-card {
+    margin-bottom: var(--spacing-m); /* Espaçamento entre cards em coluna única */
+  }
+  .add-to-cart-button {
+    width: 100%; /* Botão ocupa toda a largura em mobile */
   }
 }

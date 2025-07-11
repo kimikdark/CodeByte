@@ -1,4 +1,7 @@
 // src/server.ts
+import * as dotenv from 'dotenv';
+dotenv.config(); // Carrega as variáveis do .env
+
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,

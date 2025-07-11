@@ -1,0 +1,214 @@
+/* src/app/app.component.scss */
+
+/* Tipografia moderna sem serifa */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --verde-agua-claro: #e0f2f2;
+  --verde-agua-hover: #cceeee;
+  --verde-agua-escuro: #008080;
+  --verde-agua-ativo: #006666;
+  --cinza-texto: #333;
+  --cor-titulo: #20c997; /* Usando o verde-água dos botões/branding */
+  --cor-texto-links: #333333; /* Preto para os links */
+  --cor-sublinhado-hover: #20c997; /* O verde-água para o sublinhado */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fdfefe;
+  margin: 0;
+  padding: 0;
+  color: var(--cinza-texto);
+}
+
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #ffffff; /* Fundo branco para um estilo mais clean */
+  border-bottom: 1px solid #e0e0e0; /* Linha sutil para separar do conteúdo */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Logo e Título */
+.logo-container {
+  display: flex;
+  align-items: center;
+
+  h1 {
+    color: var(--cor-titulo); /* Aplicando o verde-água ao título */
+    font-size: 1.8em; /* Tamanho da fonte do título */
+    margin: 0;
+    font-weight: 600; /* Um pouco mais de peso na fonte */
+  }
+}
+
+.app-header .logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+}
+
+/* Navegação - Mantendo horizontal com texto preto e hover */
+.main-nav {
+  // Já é display: flex; em .app-header, mas podemos reforçar
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espaçamento entre os itens da navbar */
+
+  ul { // Adicionado o ul para envolver os li
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; // Para alinhar os li horizontalmente
+  }
+
+  li { // Para estilizar cada item da lista (cada link)
+    margin: 0 12px; // Espaçamento horizontal entre os links
+  }
+
+  a {
+    color: var(--cor-texto-links); /* Texto preto para os links */
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 0; /* Padding vertical para dar espaço ao sublinhado */
+    position: relative; /* Necessário para o efeito de sublinhado */
+    transition: color 0.3s ease; /* Transição suave para a cor do texto no hover */
+
+    /* Efeito de Sublinhado (da esquerda para a direita) */
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0%; /* Começa com largura zero */
+      height: 2px; /* Espessura do sublinhado */
+      bottom: 0; /* Posiciona na parte inferior do link */
+      left: 0;
+      background-color: var(--cor-sublinhado-hover); /* Cor do sublinhado (verde-água) */
+      transition: width 0.3s ease-out; /* Animação da largura */
+    }
+
+    &:hover {
+      color: var(--cor-sublinhado-hover); /* Muda a cor do texto para verde-água no hover */
+    }
+
+    &:hover::before,
+    &.active::before { /* O sublinhado aparece no hover e no link ativo */
+      width: 100%; /* A largura se expande para 100% */
+    }
+
+    &.active {
+      color: var(--cor-sublinhado-hover); /* Mantém a cor verde-água para o link ativo */
+      font-weight: 600; /* Um pouco mais de peso para o ativo */
+    }
+  }
+}
+
+.product-actions {
+  display: flex;
+  justify-content: center; /* Centraliza o botão */
+  margin-top: 15px;
+
+  .btn-details {
+    background-color: #20c997; /* O seu verde-água */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #17a2b8; /* Um tom ligeiramente diferente no hover, ou um mais escuro */
+      transform: translateY(-2px); /* Efeito de elevação sutil */
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  /* Se tiver um botão de editar ou eliminar separado */
+  .btn-edit {
+    background-color: #007bff; /* Exemplo de cor para editar */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px; /* Espaçamento se houver mais de um botão */
+    // ... outros estilos
+  }
+
+  .btn-delete {
+    background-color: #dc3545; /* Exemplo de cor para eliminar */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+    // ... outros estilos
+  }
+}
+
+/* Conteúdo principal */
+.app-main { /* Renomeado de .app-main no seu código, verificar se está usando <main> no HTML */
+  padding: 40px 24px;
+  min-height: calc(100vh - 120px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 14px 24px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  color: #6c757d;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+
+    ul { // Ajuste para a lista na versão responsiva
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    li {
+      margin: 5px 0; // Espaçamento vertical entre os links
+      width: 100%; // Ocupa a largura total na coluna
+    }
+
+    a {
+      display: block; // Para que o padding e o sublinhado se apliquem a toda a área do link
+      padding: 8px 15px; // Ajuste de padding para links em coluna
+      border-radius: 4px;
+    }
+  }
+}
