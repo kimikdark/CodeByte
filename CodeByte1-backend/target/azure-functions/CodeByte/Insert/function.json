@@ -1,0 +1,23 @@
+{
+  "scriptFile" : "../CodeByte-1.0-SNAPSHOT.jar",
+  "entryPoint" : "com.function.Insert.run",
+  "bindings" : [ {
+    "type" : "httpTrigger",
+    "direction" : "in",
+    "name" : "req",
+    "methods" : [ "POST" ],
+    "authLevel" : "ANONYMOUS"
+  }, {
+    "type" : "cosmosDB",
+    "direction" : "out",
+    "name" : "produtoOutput",
+    "databaseName" : "codebytebd",
+    "containerName" : "Inventorybd",
+    "connection" : "AccountEndpoint=https://codebytebd.documents.azure.com:443/;AccountKey=ZRuSye3QLLLhCasPups9b9wAs8nML0s7vavS7yPasCwX7disn4NgzMaFBaiyTA8H71N20ekjYBFYACDb2ZKjtQ==;",
+    "createIfNotExists" : true
+  }, {
+    "type" : "http",
+    "direction" : "out",
+    "name" : "$return"
+  } ]
+}
