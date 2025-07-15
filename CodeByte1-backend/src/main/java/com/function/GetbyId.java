@@ -21,7 +21,7 @@ public class GetbyId {
             id = "{query.id}",
             partitionKey = "{query.id}",
             connection = "AccountEndpoint=https://codebytebd.documents.azure.com:443/;AccountKey=ZRuSye3QLLLhCasPups9b9wAs8nML0s7vavS7yPasCwX7disn4NgzMaFBaiyTA8H71N20ekjYBFYACDb2ZKjtQ==;")
-        Eletronica produto,
+        Produto produto,
         
         final ExecutionContext context
     ) {

@@ -13,7 +13,7 @@ import java.util.Optional;
 public class Delete {
     @FunctionName("Delete")
     public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.DELETE}, route = "produtos/{id}", authLevel = AuthorizationLevel.ANONYMOUS)
+        @HttpTrigger(name = "req", methods = {HttpMethod.DELETE}, route = "products/{id}", authLevel = AuthorizationLevel.ANONYMOUS)
         HttpRequestMessage<Optional<String>> request,
         @BindingName("id") String id,
         final ExecutionContext context) {

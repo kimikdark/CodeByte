@@ -1,0 +1,7 @@
+com\function\GetAll.class
+com\function\Delete.class
+com\function\Produto.class
+com\function\Update.class
+com\function\Function.class
+com\function\Insert.class
+com\function\GetbyId.class
