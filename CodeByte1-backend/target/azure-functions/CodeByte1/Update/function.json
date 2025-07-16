@@ -1,0 +1,31 @@
+{
+  "scriptFile" : "../CodeByte-1.0-SNAPSHOT.jar",
+  "entryPoint" : "com.function.Update.run",
+  "bindings" : [ {
+    "type" : "httpTrigger",
+    "direction" : "in",
+    "name" : "req",
+    "methods" : [ "PUT" ],
+    "authLevel" : "ANONYMOUS"
+  }, {
+    "type" : "cosmosDB",
+    "direction" : "in",
+    "name" : "carroInput",
+    "partitionKey" : "{Query.id}",
+    "databaseName" : "codebytebd",
+    "containerName" : "inventorybd",
+    "connection" : "CosmosDBConnection",
+    "id" : "{Query.id}"
+  }, {
+    "type" : "cosmosDB",
+    "direction" : "out",
+    "name" : "carroOutput",
+    "databaseName" : "codebytebd",
+    "containerName" : "inventorybd",
+    "connection" : "CosmosDBConnection"
+  }, {
+    "type" : "http",
+    "direction" : "out",
+    "name" : "$return"
+  } ]
+}
