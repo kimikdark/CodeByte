@@ -14,7 +14,7 @@
     "partitionKey" : "{query.id}",
     "databaseName" : "codebytebd",
     "containerName" : "inventoryDB",
-    "connection" : "AccountEndpoint=https://codebytebd.documents.azure.com:443/;AccountKey=ZRuSye3QLLLhCasPups9b9wAs8nML0s7vavS7yPasCwX7disn4NgzMaFBaiyTA8H71N20ekjYBFYACDb2ZKjtQ==;",
+    "connection" : "CosmosDBConnection",
     "id" : "{query.id}"
   }, {
     "type" : "http",

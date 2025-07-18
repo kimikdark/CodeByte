@@ -32,7 +32,7 @@ public class Delete {
             .buildClient();
 
         // Obter o container da base de dados
-        CosmosContainer container = client.getDatabase("codebytebd").getContainer("inventorybd");
+        CosmosContainer container = client.getDatabase("Inventorybd").getContainer("Products");
 
         try {
             CosmosItemResponse<?> response = container.deleteItem(id, new PartitionKey(id), new CosmosItemRequestOptions());

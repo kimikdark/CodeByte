@@ -16,11 +16,11 @@ public class GetbyId {
 
         @CosmosDBInput(
             name = "produtoInput",
-            databaseName = "codebytebd",
-            containerName = "inventoryDB",
+            databaseName = "Inventorybd",
+            containerName = "Products",
             id = "{query.id}",
             partitionKey = "{query.id}",
-            connection = "AccountEndpoint=https://codebytebd.documents.azure.com:443/;AccountKey=ZRuSye3QLLLhCasPups9b9wAs8nML0s7vavS7yPasCwX7disn4NgzMaFBaiyTA8H71N20ekjYBFYACDb2ZKjtQ==;")
+            connection = "CosmosDBConnection")
         Produto produto,
         
         final ExecutionContext context

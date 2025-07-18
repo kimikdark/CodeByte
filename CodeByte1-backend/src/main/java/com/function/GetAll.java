@@ -16,10 +16,10 @@ public class GetAll {
 
         @CosmosDBInput(
             name = "database",
-            databaseName = "codebytebd",
-            containerName = "Inventorybd",
-            connection = "AccountEndpoint=https://codebytebd.documents.azure.com:443/;AccountKey=ZRuSye3QLLLhCasPups9b9wAs8nML0s7vavS7yPasCwX7disn4NgzMaFBaiyTA8H71N20ekjYBFYACDb2ZKjtQ==;",
-            sqlQuery = "SELECT * FROM c")
+            databaseName = "Inventorybd",
+            containerName = "Products",
+            connection = "CosmosDBConnection",
+            sqlQuery = "SELECT * FROM Products")
             List<Produto> Produto,
 
         final ExecutionContext context) {
