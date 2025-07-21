@@ -5,23 +5,24 @@
     "type" : "httpTrigger",
     "direction" : "in",
     "name" : "req",
+    "route" : "Products/{id}",
     "methods" : [ "PUT" ],
     "authLevel" : "ANONYMOUS"
   }, {
     "type" : "cosmosDB",
     "direction" : "in",
-    "name" : "carroInput",
-    "partitionKey" : "{Query.id}",
-    "databaseName" : "codebytebd",
-    "containerName" : "inventorybd",
+    "name" : "produtoInput",
+    "partitionKey" : "{id}",
+    "databaseName" : "InventoryDB",
+    "containerName" : "Products",
     "connection" : "CosmosDBConnection",
-    "id" : "{Query.id}"
+    "id" : "{id}"
   }, {
     "type" : "cosmosDB",
     "direction" : "out",
-    "name" : "carroOutput",
-    "databaseName" : "codebytebd",
-    "containerName" : "inventorybd",
+    "name" : "produtoOutput",
+    "databaseName" : "InventoryDB",
+    "containerName" : "Products",
     "connection" : "CosmosDBConnection"
   }, {
     "type" : "http",

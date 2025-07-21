@@ -11,12 +11,13 @@ public class GetbyId {
         @HttpTrigger(
             name = "req",
             methods = {HttpMethod.GET},
+            route = "GetbyId",
             authLevel = AuthorizationLevel.ANONYMOUS)
         HttpRequestMessage<Optional<String>> request,
 
         @CosmosDBInput(
             name = "produtoInput",
-            databaseName = "Inventorybd",
+            databaseName = "InventoryDB",
             containerName = "Products",
             id = "{query.id}",
             partitionKey = "{query.id}",
@@ -25,21 +26,21 @@ public class GetbyId {
         
         final ExecutionContext context
     ) {
-        context.getLogger().info("Função GET: A requisção foi processada.");
-
-        Gson gson = new Gson();
-        String produtoJson = gson.toJson(produto);
+        context.getLogger().info("Função GET: A requisição foi processada.");
 
         if (produto == null) {
             return request.createResponseBuilder(HttpStatus.NOT_FOUND)
                 .body("Produto não encontrado.")
                 .build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.OK)
-                .header("Content-Type", "application/json")
-                .body(produtoJson)
-                .build();
         }
+
+        // Só converte para JSON se o produto existir
+        String produtoJson = new Gson().toJson(produto);
+        return request.createResponseBuilder(HttpStatus.OK)
+            .header("Content-Type", "application/json")
+            .body(produtoJson)
+            .build();
     }
 }
+
 

@@ -20,7 +20,7 @@ public class Delete {
 
         context.getLogger().info("Java HTTP trigger processed a request.");
 
-        // Obter a connection string do ambiente
+        
         String connectionString = System.getenv("CosmosDBConnection");
         URI endpoint = URI.create(connectionString.split(";")[0].replace("AccountEndpoint=", ""));
         String key = connectionString.split(";")[1].replace("AccountKey=", "");
@@ -32,7 +32,7 @@ public class Delete {
             .buildClient();
 
         // Obter o container da base de dados
-        CosmosContainer container = client.getDatabase("Inventorybd").getContainer("Products");
+        CosmosContainer container = client.getDatabase("InventoryDB").getContainer("Products");
 
         try {
             CosmosItemResponse<?> response = container.deleteItem(id, new PartitionKey(id), new CosmosItemRequestOptions());

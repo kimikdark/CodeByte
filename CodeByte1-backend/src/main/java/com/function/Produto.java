@@ -5,14 +5,12 @@ public class Produto {
     private String nome;
     private String descricao;
     private Float preco;
-    private String categoriaId;      // Chave estrangeira para tabela de categorias
-    private String categoriaNome;    // Nome da categoria (opcional, para exibir)
-    private Integer quantidade;      // Para stock
-    private String imagemURL;
-    private String createdAt;        // ISO DateTime (opcional)
-    private String updatedAt;        // ISO DateTime (opcional)
+    private String categoriaId;      
+    private String categoriaNome;    
+    private Integer quantidade;      
+    private String imagemURL;        
 
-    // Getters e Setters
+    
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
@@ -36,11 +34,7 @@ public class Produto {
 
     public String getImagemURL() { return imagemURL; }
     public void setImagemURL(String imagemURL) { this.imagemURL = imagemURL; }
-
-    public String getCreatedAt() { return createdAt; }
-    public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
-
-    public String getUpdatedAt() { return updatedAt; }
-    public void setUpdatedAt(String updatedAt) { this.updatedAt = updatedAt; }
 }
+
+
 

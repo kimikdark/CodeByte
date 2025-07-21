@@ -1,0 +1,24 @@
+{
+  "scriptFile" : "../CodeByte-1.0-SNAPSHOT.jar",
+  "entryPoint" : "com.function.CategoriaFunction.deleteCategoria",
+  "bindings" : [ {
+    "type" : "httpTrigger",
+    "direction" : "in",
+    "name" : "req",
+    "route" : "Categories/{id}",
+    "methods" : [ "DELETE" ],
+    "authLevel" : "FUNCTION"
+  }, {
+    "type" : "cosmosDB",
+    "direction" : "out",
+    "name" : "output",
+    "partitionKey" : "{id}",
+    "databaseName" : "Inventorybd",
+    "containerName" : "Categories",
+    "connection" : "CosmosDBConnection"
+  }, {
+    "type" : "http",
+    "direction" : "out",
+    "name" : "$return"
+  } ]
+}

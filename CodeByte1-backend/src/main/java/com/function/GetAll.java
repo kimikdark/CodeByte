@@ -15,11 +15,11 @@ public class GetAll {
             HttpRequestMessage<Optional<Produto>> request,
 
         @CosmosDBInput(
-            name = "database",
-            databaseName = "Inventorybd",
+            name = "codebytebd",
+            databaseName = "InventoryDB",
             containerName = "Products",
             connection = "CosmosDBConnection",
-            sqlQuery = "SELECT * FROM Products")
+            sqlQuery = "SELECT * FROM c")
             List<Produto> Produto,
 
         final ExecutionContext context) {

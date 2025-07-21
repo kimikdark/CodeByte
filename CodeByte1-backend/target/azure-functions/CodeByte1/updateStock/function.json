@@ -1,22 +1,29 @@
 {
   "scriptFile" : "../CodeByte-1.0-SNAPSHOT.jar",
-  "entryPoint" : "com.function.GetbyId.run",
+  "entryPoint" : "com.function.StockFunction.updateStock",
   "bindings" : [ {
     "type" : "httpTrigger",
     "direction" : "in",
     "name" : "req",
-    "route" : "GetbyId",
-    "methods" : [ "GET" ],
-    "authLevel" : "ANONYMOUS"
+    "route" : "stock/{id}",
+    "methods" : [ "PUT" ],
+    "authLevel" : "FUNCTION"
   }, {
     "type" : "cosmosDB",
     "direction" : "in",
     "name" : "produtoInput",
-    "partitionKey" : "{query.id}",
+    "partitionKey" : "{id}",
     "databaseName" : "InventoryDB",
     "containerName" : "Products",
     "connection" : "CosmosDBConnection",
-    "id" : "{query.id}"
+    "id" : "{id}"
+  }, {
+    "type" : "cosmosDB",
+    "direction" : "out",
+    "name" : "produtoOutput",
+    "databaseName" : "InventoryDB",
+    "containerName" : "Products",
+    "connection" : "CosmosDBConnection"
   }, {
     "type" : "http",
     "direction" : "out",

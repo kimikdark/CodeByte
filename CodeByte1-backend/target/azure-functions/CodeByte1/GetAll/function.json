@@ -10,10 +10,10 @@
   }, {
     "type" : "cosmosDB",
     "direction" : "in",
-    "name" : "database",
-    "databaseName" : "codebytebd",
+    "name" : "codebytebd",
+    "databaseName" : "InventoryDB",
     "sqlQuery" : "SELECT * FROM c",
-    "containerName" : "Inventorybd",
+    "containerName" : "Products",
     "connection" : "CosmosDBConnection"
   }, {
     "type" : "http",
