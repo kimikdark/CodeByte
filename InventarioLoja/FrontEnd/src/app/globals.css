@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../../.flowbite-react/class-list.json";
+
+:root {
+  /* MODO CLARO */
+  --background: #F0FFF4; /* Um verde-menta muito claro, quase branco */
+  --foreground: #2C3E50; /* Azul escuro suave para o texto, moderno */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* MODO ESCURO */
+    --background: #1A202C; /* Um cinzento muito escuro, quase preto */
+    --foreground: #E2E8F0; /* Cinzento claro para o texto no modo escuro */
+
+    /* Variáveis de destaque para o modo escuro */
+    --accent-color: #2C3E50;
+    --secondary-accent: #2C3E50;
+  }
+}
+
+body {
+  background: var(--background); /* Estas linhas usam as variáveis que definiste */
+  color: var(--foreground);     /* para o fundo e o texto base do site */
+  font-family: Arial, Helvetica, sans-serif;
+}
