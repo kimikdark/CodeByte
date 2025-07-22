@@ -25,7 +25,7 @@ jobs:
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Get Id Token
-        uses: actions/github-script@v6
+        uses: actions:github-script@v6
         id: idtoken
         with:
           script: |
@@ -40,10 +40,11 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # A raiz do seu projeto Angular está na raiz do repositório.
+          app_location: "/" # Correto.
           api_location: "" # Mantido em branco.
-          output_location: "dist/frontend" # O output padrão do Angular.
-          app_build_command: "npm install && ng build --configuration=production" # Comando explícito para o build Angular.
+          output_location: "dist/frontend" # Correto.
+          # CORREÇÃO AQUI: Instalar @angular/cli globalmente ANTES de executar ng build
+          app_build_command: "npm install -g @angular/cli && npm install && ng build --configuration=production" # Adição de 'npm install -g @angular/cli'
           github_id_token: ${{ steps.idtoken.outputs.result }}
           ###### End of Repository/Build Configurations ######
 
