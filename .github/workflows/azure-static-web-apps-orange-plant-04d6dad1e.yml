@@ -40,12 +40,16 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" 
-          api_location: ""
-          output_location: "dist/frontend"
-          # CORREÇÃO AQUI: Adicionar limpeza de cache do npm antes da instalação
-          app_build_command: "npm cache clean --force && npm install && npm run build -- --configuration=production" 
+          app_location: "/" # Correto.
+          api_location: "" # Mantido em branco.
+          output_location: "dist/frontend" # Correto.
+          # CORREÇÃO CRÍTICA AQUI: Remover 'npm install' e 'npm cache clean --force'.
+          # Deixar o Oryx gerenciar a instalação e apenas invocar o build.
+          app_build_command: "npm run build -- --configuration=production" 
+          # Também podemos tentar "ng build frontend --configuration=production" se o npm run build falhar de novo
           github_id_token: ${{ steps.idtoken.outputs.result }}
+          # Adicionar explicitamente skip_app_build para clareza, embora o padrão seja false
+          skip_app_build: false 
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
