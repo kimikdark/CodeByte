@@ -40,12 +40,11 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # Correto.
-          api_location: "" # Mantido em branco.
-          output_location: "dist/frontend" # Correto.
-          # CORREÇÃO AQUI: Usar 'npm run build' para invocar o script build do package.json.
-          # O comando 'build' no seu package.json já inclui 'ng build'.
-          app_build_command: "npm install && npm run build -- --configuration=production" 
+          app_location: "/" 
+          api_location: ""
+          output_location: "dist/frontend"
+          # CORREÇÃO AQUI: Adicionar limpeza de cache do npm antes da instalação
+          app_build_command: "npm cache clean --force && npm install && npm run build -- --configuration=production" 
           github_id_token: ${{ steps.idtoken.outputs.result }}
           ###### End of Repository/Build Configurations ######
 
