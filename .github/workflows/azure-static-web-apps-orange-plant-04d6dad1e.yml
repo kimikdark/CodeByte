@@ -40,12 +40,12 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/" # A raiz do seu projeto Angular está na raiz do repositório.
+          app_location: "/" # Correto.
           api_location: "" # Mantido em branco.
-          output_location: "dist/frontend" # O output padrão do Angular.
-          # CORREÇÃO CRÍTICA AQUI: Mudar para o diretório de trabalho correto ANTES de executar o build.
-          # O nome do projeto 'frontend' está confirmado no angular.json.
-          app_build_command: "npm install -g @angular/cli && npm install && cd ./ && ng build frontend --configuration=production" 
+          output_location: "dist/frontend" # Correto.
+          # CORREÇÃO CRÍTICA AQUI: Usar o 'ng' local do node_modules/.bin
+          # Removemos o 'npm install -g @angular/cli' e o 'cd ./'
+          app_build_command: "npm install && ./node_modules/.bin/ng build frontend --configuration=production" 
           github_id_token: ${{ steps.idtoken.outputs.result }}
           ###### End of Repository/Build Configurations ######
 
